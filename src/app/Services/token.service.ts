@@ -7,8 +7,8 @@ import {Injectable} from '@angular/core';
 export class TokenService {
 
     private iss = {
-        login: 'https://elearn-fyp2.herokuapp.com/api/login',
-        signup: 'https://elearn-fyp2.herokuapp.com/api/signup'
+        login: 'https://elearn-fyp2.herokuapp.com/api/login'
+        // signup: 'https://elearn-fyp2.herokuapp.com/api/signup'
     };
 
 
@@ -52,7 +52,8 @@ export class TokenService {
         if (token) {
             const payload = this.payload(token);
             if (payload) {
-                return (Object.values(this.iss).indexOf(payload.iss) > -1) ? true : false;
+                console.log('index of payload.iss', Object.values(this.iss).indexOf(payload.iss));
+                return (Object.values(this.iss).indexOf(payload.iss) > -1);
             }
         }
 
