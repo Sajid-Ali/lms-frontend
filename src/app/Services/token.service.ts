@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 export class TokenService {
 
     private iss = {
-        login: 'https://elearn-fyp2.herokuapp.com/api/login'
+        login: 'http://elearn-fyp2.herokuapp.com/api/login'
         // signup: 'https://elearn-fyp2.herokuapp.com/api/signup'
     };
 
