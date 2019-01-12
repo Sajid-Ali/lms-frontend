@@ -22,8 +22,8 @@ export class GigDetailComponent implements OnInit {
         user_id: ''
     };
 
-    private gigId;
-    private gig;
+    gigId;
+    gig;
     @ViewChild('modalCloseBtn') closeButton: ElementRef;
     modal;
 
@@ -84,6 +84,10 @@ export class GigDetailComponent implements OnInit {
         this.modal.click();
 
         console.log(this.data);
+    }
+
+    onUploadComplete(event) {
+
     }
 
 }

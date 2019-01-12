@@ -11,8 +11,8 @@ import {TokenService} from '../../Services/token.service';
 })
 export class CourseListComponent implements OnInit, DoCheck {
 
-    private courses;
-    private isLoading;
+     courses;
+     isLoading;
     @Input() private categoryCourses;
 
     constructor(

@@ -25,13 +25,13 @@ import uploadcare from 'uploadcare-widget';
 export class CourseDetailComponent implements OnInit, DoCheck {
 
     @ViewChild('modalCloseBtn') videoUploadModal: ElementRef;
-    private courseId;
-    private courseDetails = {
+     courseId;
+     courseDetails = {
         name: null,
         source: null
     };
     public course;
-    private uploadedVideo;
+     uploadedVideo;
     videoData = {
         uuid: null,
         cdnUrl: null,

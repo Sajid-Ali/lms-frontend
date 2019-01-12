@@ -8,8 +8,8 @@ import {RequestHandlerService} from '../../Services/request-handler.service';
 })
 export class CategoryNavComponent implements OnInit {
 
-    private categories;
-    private category_id;
+     categories;
+     category_id;
     @Output() changeCourse = new EventEmitter();
     @Output() changeGig = new EventEmitter();
 

@@ -13,10 +13,10 @@ export class ClassRoomComponent implements OnInit {
 
     @ViewChild('reviewModalCloseBtn') modalCloseBtn: ElementRef;
     closeBtn;
-    private courseId;
-    private course;
-    private courseVideos;
-    private source;
+    courseId;
+    course;
+    courseVideos;
+    source;
     public currentPlaying;
     mouseHoverOnLike;
     mouseHoverOnDontLike;

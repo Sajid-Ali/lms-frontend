@@ -10,9 +10,9 @@ import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@ang
 })
 export class CourseEnrollComponent implements OnInit {
 
-  private userId;
-  private isEnrolled;
-  private enrolledCourses;
+   userId;
+   isEnrolled;
+   enrolledCourses;
   constructor(
     private requestHandler: RequestHandlerService,
     private tokenHandler: TokenService,

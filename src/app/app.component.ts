@@ -9,9 +9,9 @@ import {RequestHandlerService} from './Services/request-handler.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    private userData;
-    private loggedIn;
-    private balance;
+     userData;
+     loggedIn;
+     balance;
 
     constructor(private observer: ObserverService) {
     }

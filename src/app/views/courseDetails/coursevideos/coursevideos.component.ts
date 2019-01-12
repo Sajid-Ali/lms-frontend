@@ -30,12 +30,12 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
     @ViewChild(UcWidgetComponent) UCWidget: UcWidgetComponent;
     @ViewChild(UcWidgetCustomComponent) Custom_UCWidget: UcWidgetCustomComponent;
 
-    private courseDetails = {
+     courseDetails = {
         name: null,
         source: null
     };
     public course;
-    private uploadedVideo;
+     uploadedVideo;
     videoData = {
         uuid: null,
         cdnUrl: null,
@@ -49,8 +49,8 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() public courseVideos;
     public courseId;
     public enrolledCourses;
-    private widget;
-    private videoPlayer;
+     widget;
+     videoPlayer;
     durationFetchingComplete = true;
     @Input() public modules;
     loading;

@@ -19,7 +19,7 @@ export class GigComponent implements OnInit {
         user_id: ''
     };
 
-    private gigs;
+    gigs;
     @ViewChild('modalCloseBtn') closeButton: ElementRef;
     modal;
 

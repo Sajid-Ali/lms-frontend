@@ -15,9 +15,9 @@ import uploadcare from 'uploadcare-widget';
 })
 export class MyCourseComponent implements OnInit {
 
-    private courseId;
+    courseId;
     createdCourse;
-    private isUploadComplete;
+    isUploadComplete;
     public data = {
         course_name: null,
         description: null,
@@ -29,12 +29,12 @@ export class MyCourseComponent implements OnInit {
         course_type_id: null
     };
 
-    private courses;
-    private hover;
+    courses;
+    hover;
     @ViewChild('createCourseModal') createCourseModal: ElementRef;
     @ViewChild('uploadCareWidget') uploadCareWidget: ElementRef;
     modal: any;
-    private widget;
+    widget;
 
     constructor(
         private requestHandler: RequestHandlerService,

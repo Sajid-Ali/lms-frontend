@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class GigListComponent implements OnInit, DoCheck {
 
-    private gigs;
+    gigs;
 
     @Input() private categoryGigs;
     public isLoading;
@@ -23,7 +23,10 @@ export class GigListComponent implements OnInit, DoCheck {
 
     ngOnInit() {
         this.requestHandler.getAllGigs().subscribe(
-            data => {this.gigs = data; this.isLoading = false},
+            data => {
+                this.gigs = data;
+                this.isLoading = false;
+            },
             error => console.log(error.error.error)
         );
 

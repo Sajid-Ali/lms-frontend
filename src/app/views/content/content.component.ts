@@ -7,8 +7,8 @@ import {Component, DoCheck, OnInit} from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  private courses;
-  private gigs;
+   courses;
+   gigs;
   constructor() { }
 
   ngOnInit() {

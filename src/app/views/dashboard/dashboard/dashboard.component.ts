@@ -8,10 +8,10 @@ import {PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@ang
 })
 export class DashboardComponent implements OnInit, DoCheck {
 
-  private isEnrolledSelect;
-  private isMyCourseSelect;
-  private urlSegemnt;
-  private sec;
+   isEnrolledSelect;
+   isMyCourseSelect;
+   urlSegemnt;
+   sec;
   constructor(private router: Router) { }
 
   ngOnInit() {
