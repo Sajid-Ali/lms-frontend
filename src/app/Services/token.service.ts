@@ -63,10 +63,12 @@ export class TokenService {
 
     payload(token) {
         const payload = token.split('.')[1];
+        console.log('payload:', payload);
         return this.decode(payload);
     }
 
     decode(payload) {
+        console.log('after decode:', JSON.parse(atob(payload)));
         return JSON.parse(atob(payload));
     }
 
