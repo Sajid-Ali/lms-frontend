@@ -1,0 +1,31 @@
+
+<div class="card" style="margin-top:6rem;">
+  <div class="card-body">
+    <div class="row m-0">
+      <div class="col-lg-3">
+        <div class="card" style="height: 18rem;">
+          <div class="card-body">
+            <div class="user-img col-lg-10 mx-auto card-img-overlay">
+              <img src="{{user.profile_pic}}" alt="" class="img-fluid rounded-circle">
+            </div>
+            <div class="user-name" style="margin-top:13rem;">
+              <h5 class="text-center">Ghulam haider</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-body" style="font-size:1.2rem;">
+            <a routerLink="profile">Profile</a>
+            <hr>
+            <a routerLink="profile_picture">Profile Picture</a>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+

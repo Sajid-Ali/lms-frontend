@@ -1,0 +1,19 @@
+.searchResultArea{
+    width: 35rem;
+    height: auto;
+    background-color: white;
+    z-index: 1000000;
+    color:black;
+    top:3rem;
+    left:19rem;
+    position: fixed;
+    box-shadow: #cfd7df;
+}
+
+#searchBar{
+    border-radius: 0px;
+}
+
+.searchCourseResult:hover{
+    cursor: pointer;
+}

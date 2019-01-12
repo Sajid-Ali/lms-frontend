@@ -1,0 +1,33 @@
+<div id="navigation">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" routerLink="">ELEARN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <form class="form-inline my-lg-0">
+              <input class="form-control mr-sm-2" style="width:35rem" type="search" placeholder="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item mr-4">
+                  <a  routerLinkActive="active" class="nav-link" *ngIf="loggedIn">{{this.authUser.firstName}}</a>
+                </li>
+            <li class="nav-item mr-4">
+              <a routerLink="login" routerLinkActive="active" class="nav-link btn btn-outline-success" *ngIf="!loggedIn">Login</a>
+            </li>
+            <li class="nav-item ml-auto"><a routerLink="register" routerLinkActive="active" class="nav-link btn btn-outline-success" *ngIf="!loggedIn">Register</a></li>
+            <li class="nav-item ml-auto"><a href="#" (click)="logOut($event)" class="nav-link btn btn-outline-success" *ngIf="loggedIn" >Log out</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+</div>

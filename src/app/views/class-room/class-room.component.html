@@ -1,0 +1,114 @@
+<div class="card bg-dark mt-4 card-header">
+    <div class="container mt-4">
+        <div class="card-body col-lg-12">
+            <div class="row">
+                <div class="img-thumb">
+                    <img src="{{course.image_cdnUrl}}" alt="CourseImage">
+                </div>
+                <div class="col-lg-8 mt-1">
+                    <h1 class="course-title text-white">
+                        {{course.course_name}}
+                    </h1>
+                    <p class="text-white">
+                        {{course.description}}
+                    </p>
+                    <div>
+                        <!--<a><i class="mdi mdi-thumb-up m-2" [class.mouseEnter]="mouseHover"  style="font-size:2rem;" (mouseenter)="onMouseHover()" (mouseleave)="onMouseLeave()"></i> </a><span class="mt-3" style="font-size: 1.2rem; color:white;">2</span>-->
+                        <!--<a><i class="mdi mdi-thumb-down m-2" style="color:lightgrey;font-size:2rem;"></i> </a><span class="mt-3" style="font-size: 1.2rem; color:white;">2</span>-->
+                    </div>
+                </div>
+            </div>
+            <a data-toggle="modal" data-target="#rateModal" class="btn btn-primary text-white" (click)="onModalOpened()">{{this.course_ratting_review && 'Change Ratting and Review' || 'Rate This Course'}}</a>
+
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="row">
+        <div class="card col-lg-4 px-0">
+            <div class="card-header px-0">
+                <h4 class="text-center">
+                    Course Content
+                </h4>
+            </div>
+            <div class="card-body px-0">
+                <div class="card mb-1 videoCard" *ngFor="let videos of courseVideos" id="{{videos.id}}"
+                     (click)="changeSource(videos.cdnUrl,videos.id)" [class.active]="currentPlaying === videos.id">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <img src="../../../assets/images/course.jpg" alt="Course Videos" class="img-fluid">
+                            </div>
+                            <div class="col-lg-8">
+                                <h5 class="card-title mt-2">
+                                    {{videos.title}}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 p-1 fixed">
+            <video src="{{source}}" class="col-lg-12" width="100%" height="100%" controls>
+            </video>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="rateModal" tabindex="-1" role="dialog" aria-labelledby="rateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rateModelLabel">{{this.course_ratting_review && 'Change Ratting and Review' || 'Rate This Course'}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #reviewModalCloseBtn>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <form #reviewForm=ngForm (ngSubmit)="onSubmit(reviewForm)">
+                            <div class="form-group">
+                                <textarea name="review" id="review" cols="30" rows="10" class="form-control" [(ngModel)]="course_ratting_review.review"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="form-control btn btn-success" [disabled]="!(course_ratting_review.review && course_ratting_review.like_status_id)">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 card-body">
+                        <div class="likeIt mt-4">
+                            <div class="row">
+                                <div class="likeIcon">
+                                    <a><i class="mdi mdi-thumb-up" style="font-size: 5rem;"
+                                          (mouseover)="onMouseHoverOnLike()" [class.hover]="mouseHoverOnLike"
+                                          (mouseleave)="onMouseLeave()" (click)="onLikePressed()"
+                                          [class.liked]="liked"></i></a>
+                                </div>
+                                <div class="disc">
+                                    I like this Course
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dontLikeIt">
+                            <div class="row">
+                                <div class="likeIcon">
+                                    <a><i class="mdi mdi-thumb-down" style="font-size: 5rem;"
+                                          (mouseover)="onMouseHoverDontLike()" [class.hover]="mouseHoverOnDontLike"
+                                          (mouseleave)="onMouseLeave()" (click)="onUnlikePressed()"
+                                          [class.liked]="unliked"></i></a>
+                                </div>
+                                <div class="disc">
+                                    I dont Like it
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.videoCard:hover{
+    padding:0.2rem !important;
+    cursor: pointer;
+}
+.list-group-item:hover{
+    color:green;
+    cursor: pointer;
+}
+.active{
+    color:green;
+    background-color: transparent;
+}

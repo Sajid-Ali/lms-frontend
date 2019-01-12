@@ -1,0 +1,97 @@
+<div id="navigation">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="">ELEARN</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <form class="form-inline my-lg-0">
+          <input class="form-control mr-sm-2" name="searchBar" id="searchBar" style="width:35rem" type="search" placeholder="Search" [(ngModel)]="searchTerm" #filterInput="ngModel">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item mr-4">
+          <a routerLink="login" routerLinkActive="active" class="nav-link btn btn-outline-success" *ngIf="!loggedIn">Login</a>
+        </li>
+        <li class="nav-item ml-auto"><a routerLink="register" routerLinkActive="active" class="nav-link btn btn-outline-success"
+            *ngIf="!loggedIn">Register</a></li>
+
+          <!--<li class="nav-item" *ngIf="loggedIn">-->
+            <!--<a routerLink="/user/orders" class="nav-link">-->
+              <!--<i class="mdi mdi-library-books" style="font-size: 2rem;"></i>-->
+            <!--</a>-->
+          <!--</li>-->
+        <li class="nav-item mr-4">
+          <a routerLink="/user/dashboard" class="nav-link" *ngIf="loggedIn">
+              <i class="mdi mdi-dashboard " style="font-size: 2rem;"></i>
+          </a>
+        </li>
+          <!--<li class="nav-item mr-4">-->
+              <!--<a class="nav-link text-white" *ngIf="loggedIn">${{balance}}</a>-->
+          <!--</li>-->
+
+        <div *ngIf="loggedIn">
+          <div class="btn-group dropdown">
+            <!--<button type="button" class="btn btn-outline-success" *ngIf="authUser">{{authUser.firstName}}</button>-->
+            <!--<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"-->
+              <!--aria-haspopup="true" aria-expanded="false">-->
+              <!--&lt;!&ndash;<span class="sr-only">Toggle Dropdown</span>&ndash;&gt;-->
+            <!--</button>-->
+            <a href="#" class=" dropdown-toggle-split nav-link" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              <i class="mdi mdi-account-circle " style="font-size: 2rem;"></i>
+                <span class="badge badge-success">{{balance |currency}}</span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-left" style="left:-10rem;top:110%;min-width: 15rem; border-radius:0">
+              <a class="dropdown-item" routerLink="user/profile"><i class="mdi mdi-person text-success" style="font-size: 1rem; margin-right: 1rem;"></i>{{authUser.firstName}}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" (click)="logOut($event)"> <i class="mdi mdi-exit-to-app text-success" style="font-size: 1rem; margin-right: 1rem;"></i>Logout</a>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </nav>
+  <div class="searchResultArea">
+    <div *ngIf="searchResults" class="ml-2 pt-3">
+      <div *ngFor="let filterResults of searchResults">
+        <div *ngFor="let results of filterResults">
+          <div *ngIf="results.course_name">
+            <div class="row">
+              <a class="col-lg-3 searchCourseResult">
+                <img src="{{results.image_cdnUrl}}" alt="image of course" class="img-fluid" (click)="navigateToDetails(results.id,results.user_id)">
+              </a>
+              <a class="col-lg-8 searchCourseResult">
+                <h5 (click)="navigateToDetails(results.id,results.user_id)">{{results.course_name}}</h5>
+                <p (click)="navigateToDetails(results.id,results.user_id)">{{results.description}}</p>
+              </a>
+            </div>
+          </div>
+          <!--<div *ngIf="results.firstName">-->
+            <!--<div class="row">-->
+              <!--&lt;!&ndash;<a class="col-lg-3 searchCourseResult">&ndash;&gt;-->
+                <!--&lt;!&ndash;<img src="{{results.image_cdnUrl}}" alt="image of course" class="img-fluid" (click)="navigateToDetails(results.id,results.user_id)">&ndash;&gt;-->
+              <!--&lt;!&ndash;</a>&ndash;&gt;-->
+              <!--<a class="col-lg-8 searchCourseResult">-->
+                <!--<h5 (click)="navigateToDetails(results.id,results.user_id)">{{results.firstName}}</h5>-->
+                <!--&lt;!&ndash;<p (click)="navigateToDetails(results.id,results.user_id)">{{results.description}}</p>&ndash;&gt;-->
+              <!--</a>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

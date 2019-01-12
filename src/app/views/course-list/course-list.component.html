@@ -1,0 +1,25 @@
+<div>
+    <div class="container mx-auto">
+        <div class="col-lg-12 bg-dark nav-link my-3">
+            <h5 class="text-white">Course Section</h5>
+        </div>
+        <div class="row">
+            <div class="card  m-3 mt-3"  style="width: 15.5rem;" *ngFor="let course of courses"
+                 (click)="navigateToDetails(course.id,course.user_id)">
+                <img class="card-img-top" src="{{course.image_cdnUrl}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-text">{{course.course_name}}</h5>
+                </div>
+                <div class="card-footer">
+                    <h5 class="float-right">${{course.price}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div *ngIf="isLoading">
+    <div class="container text-center">
+        <img src="../../../assets/loader.gif" class="col-lg-1 img-fluid" alt="Loading ...."/>
+    </div>
+</div>

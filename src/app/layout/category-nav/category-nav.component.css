@@ -1,0 +1,8 @@
+.categoryLink:hover{
+    cursor: pointer;
+    color: green !important;
+}
+
+.active{
+    color:green !important;
+}

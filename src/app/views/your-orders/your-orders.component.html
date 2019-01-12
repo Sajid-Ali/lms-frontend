@@ -1,0 +1,19 @@
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Buyer</th>
+        <th scope="col">Gig</th>
+        <th scope="col">total</th>
+        <!--<th scope="col">status</th>-->
+    </tr>
+    </thead>
+    <tbody *ngFor="let orders of yourOrders">
+    <tr *ngFor="let order of orders">
+        <td>{{order.user.firstName}}</td>
+        <td>
+            <a class="nav-link" routerLink="#">{{order.title}}</a>
+        </td>
+        <td>{{order.price | currency}}</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,6 @@
+<app-banner></app-banner>
+<app-category-nav (changeCourse)="setCourseFromCategory($event)" (changeGig)="setGigFromCategory($event)"></app-category-nav>
+<div class="container-fluid">
+    <app-course-list [categoryCourses]="courses"></app-course-list>
+    <app-gig-list [categoryGigs]="gigs"></app-gig-list>
+</div>

@@ -1,0 +1,15 @@
+.login-wrapper{
+    margin-top:4.5rem;
+ }
+ .wrapper{
+     background-image: url('../../../assets/images/login-bg.jpg');
+     background-size: cover;
+     overflow: auto;
+ }
+ .container{
+     margin-top:5rem !important;
+     margin-bottom: 5rem;
+ }
+ #emailHelp{
+     color:white !important;
+ }

@@ -1,0 +1,12 @@
+.banner{
+    background-image: url('../../../assets/images/bg2.jpg');
+    background-size: cover;
+    height: 30rem;
+    border-radius: 0 !important;
+}
+h1{
+    color:white;
+}
+p{
+    color:grey;
+}

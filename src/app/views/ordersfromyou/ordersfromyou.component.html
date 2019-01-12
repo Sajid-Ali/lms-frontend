@@ -1,0 +1,17 @@
+<table class="table">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col">Gig</th>
+    <th scope="col">total</th>
+    <!--<th scope="col">status</th>-->
+  </tr>
+  </thead>
+  <tbody *ngFor="let gig of orders">
+  <tr>
+    <td>
+      <a class="nav-link" routerLink="#">{{gig.title}}</a>
+    </td>
+    <td>{{gig.price | currency}}</td>
+  </tr>
+  </tbody>
+</table>

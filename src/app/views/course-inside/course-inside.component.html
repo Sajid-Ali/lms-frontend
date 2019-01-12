@@ -1,0 +1,249 @@
+<div class="card bg-dark mt-4 card-header">
+    <div class="mt-4">
+        <div class="card-body col-lg-12">
+            <div class="row">
+                <!--<div class="img-thumb">-->
+                <!--<img src="{{course.image_cdnUrl}}" alt="CourseImage">-->
+                <!--</div>-->
+                <div class="col-lg-10">
+                    <h1 class="course-title text-white col-lg-12">
+                        {{course.course_name}}
+                    </h1>
+                    <p class="text-white col-lg-10">
+                        {{course.description}}
+                    </p>
+                    <!--<div class="ml-3">-->
+                        <!--<div class="row">-->
+                            <!--<div class="">-->
+                                <!--<i class="mdi mdi-star text-white" style="font-size: 1.3rem"></i>-->
+                            <!--</div>-->
+                            <!--<div class="">-->
+                                <!--<i class="mdi mdi-star text-white" style="font-size: 1.3rem;"></i>-->
+                            <!--</div>-->
+                            <!--<div class="">-->
+                                <!--<i class="mdi mdi-star text-white" style="font-size: 1.3rem;"></i>-->
+                            <!--</div>-->
+                            <!--<div class="">-->
+                                <!--<i class="mdi mdi-star text-white" style="font-size: 1.3rem;"></i>-->
+                            <!--</div>-->
+                            <!--<div class="">-->
+                                <!--<i class="mdi mdi-star text-white" style="font-size: 1.3rem;"></i>-->
+                            <!--</div>-->
+                            <!--<div class="ml-2">-->
+                                <!--<a href="#">Rate this course</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <ul class="nav">
+                        <li class="nav-item">
+
+                            <a routerLink="" fragment="about_creator" class="nav-link text-white">
+                                <span class="text-white">
+                                Created by :
+                            </span>
+                                {{course_user.firstName + ' ' + course_user.lastName}}
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container col-lg-8">
+        <div class="container mt-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h4 class="card-heading">What you will learn</h4>
+                    <div class="card-text">
+                        {{courseInfo.wywl}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <div class="card-body">
+                <h4 class="card-heading">Description</h4>
+                <div class="card-text">
+                    {{courseInfo.description}}
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h4 class="mt-4">
+                Course Content
+            </h4>
+            <!--<div class="card">-->
+            <!--<div class="card-body">-->
+            <!--<ul>-->
+            <!--<li *ngFor="let courseVideo of courseVideos">-->
+            <!--<a class="nav-link text-muted">{{courseVideo.title}}</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="row">
+                <div>
+                    <div class="card mb-3" style="width:50rem;" *ngFor="let module of modules">
+                        <div class="card-header" (click)="toggleCourse($event,module.id)" #ContentHeader>
+                            <strong><span style="margin-right: 0.5rem;"
+                                          id="span_{{module.id}}">-</span>{{module.module_name}}</strong>
+                        </div>
+
+                        <div class="card-body p-0 cardBody" id="contentCardBody">
+                            <!--<table class="table hidden">-->
+                            <!--<tbody *ngFor="let courseVideo of courseVideos">-->
+                            <!--<tr style="margin-left: 4rem !important;" *ngIf="courseVideo.course_module_id === module.id">-->
+                            <!--<td>{{courseVideo.title}}</td>-->
+                            <!--<td></td>-->
+                            <!--<td>{{courseVideo.duration}}</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                            <!--</table>-->
+                            <ul class="list-group list-group-flush">
+                                <div *ngFor="let video of courseVideos">
+                                    <li class="list-group-item" *ngIf="video.course_module_id === module.id">
+                                        {{video.title}}<span
+                                            class="float-right">{{getFormattedDuration(video.duration)}}</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4" id="about_creator">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-1">
+                                <img src="{{course_user.profile_pic}}" alt="" class="img-fluid rounded-circle">
+                        </div>
+                        <div>
+                            <h5 class="mt-1">{{course_user.firstName+" "+course_user.lastName}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-heading">About Creator</h4>
+                    <div class="card-text">
+                        {{course_user && course_user.biography}}
+                        {{!course_user && "Creator did not provide any details"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="courseReviews">
+            <div class="container mt-4">
+                <h3>Course Reviews</h3>
+                <hr>
+                <div *ngIf="courseReviews">
+                    <div *ngFor="let courseReview of courseReviews">
+                        <div class="card-body bg-light mb-2 mt-2">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <img src="{{courseReview.user.profile_pic}}" alt="" class="img-fluid rounded-circle col-lg-8">
+                                    <h5 class="mt-2">{{courseReview.user.firstName+" "+courseReview.user.lastName}}</h5>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p class="text-justify">{{courseReview.review}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card col-lg-3 mr-5 courseSideBar">
+        <div class="card mt-3">
+            <img src="{{course.image_cdnUrl}}" class="card-img" alt="courseImage" height="230px">
+            <div class="card-img-overlay text-center">
+                <img src="../../../assets/playButton.png" alt="play button" class="playButton img-fluid mt-4"
+                     (click)="openModal()" data-target="#previewModal" data-toggle="modal">
+            </div>
+        </div>
+        <h1 class="mt-3">
+            ${{ course.price }}
+        </h1>
+        <!--<div class="text-center mt-3" *ngIf="isLoggedIn && isEnrolled">-->
+        <!--&lt;!&ndash;<h5>You are Already enrolled</h5>&ndash;&gt;-->
+        <!--</div>-->
+        <div class="text-center mt-3 mb-3" *ngIf="isLoggedIn && isEnrolled">
+            <a class="btn btn-success btn-block text-white" (click)="course.course_type_id == 1 && goToClass() || goToLiveRoom()">
+                {{course.course_type_id == 1 && "Go To Class room" || "Go to Live Room"}}
+            </a>
+        </div>
+        <div class="text-center mt-3 mb-3" *ngIf="!isEnrolled">
+            <button class="btn btn-danger btn-block" data-target="#paymentModal" data-toggle="modal" (click)="buyNow()">
+                Buy now
+            </button>
+        </div>
+        <!--<div class="container-fluid">-->
+        <!--<h2 class="m-2">Includes</h2>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal  fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Course Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <video src="{{preview}}" class="img-fluid" controls>
+
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal  fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--<div class="modal-header">-->
+            <!--<h5 class="modal-title" id="exampleModalLabel">Add Payment Details</h5>-->
+            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">-->
+            <!--<span aria-hidden="true">&times;</span>-->
+            <!--</button>-->
+            <!--</div>-->
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="videoUploadModalLabel">CARD INFORMATION</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #modalCloseBtn>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--<h5 class="text-center">CARD INFORMATION</h5>-->
+                <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+                    <div id="card-info" class="form-group" #cardInfo></div>
+                    <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+                    <button type="submit" class="btn btn-success btn-block" [hidden]="isLoading">Pay
+                        ${{course.price}}</button>
+                    <div class="btn btn-success btn-block" [hidden]="!isLoading">
+                        <img src="../../../assets/loader.gif" style="width:2rem;" alt="loading..."/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

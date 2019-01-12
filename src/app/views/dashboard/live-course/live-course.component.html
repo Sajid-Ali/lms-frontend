@@ -1,0 +1,17 @@
+<div class="card" style="width: auto">
+  <div class="card-header bg-success text-white">
+    Live Streaming
+  </div>
+  <div class="card-body">
+      <div id="videos" class="mx-auto">
+        <div id="publisher" class="mt-2"></div>
+        <div id="subscriber" class="row mt-4"></div>
+      </div>
+      <!--<video playsinline autoplay id="canvas"></video>-->
+    <div class="text-center">
+      <input type="button" class="btn btn-success mr-3" (click)="start()"  value="Start" [disabled]="started == true">
+      <input type="button" class="btn btn-danger" (click)="end()" [disabled]="started == false" value="End">
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,16 @@
+.dashboard{
+    margin-top:3.6rem;
+}
+.dashboard-header{
+    border-radius: 0;
+}
+.nav-link{
+    color:grey;
+}
+.nav-link:hover{
+    color: green;
+    border-bottom: 2 green solid;
+}
+.active{
+    color:green;
+}

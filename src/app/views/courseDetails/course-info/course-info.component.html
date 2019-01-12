@@ -1,0 +1,31 @@
+<div class="container">
+    <form #courseInfo="ngForm" (ngSubmit)="submit()">
+        <div class="card mb-2">
+            <div class="card-header">
+                <h4 class="text-center">What you will learn</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group">
+                    <textarea type="text" class="form-control" name="wywl" rows="5" [(ngModel)]="data.wywl"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-2">
+            <div class="card-header">
+                <h4 class="text-center">Complete Course Description</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group">
+                    <textarea type="text" class="form-control" name="description" rows="10"
+                              [(ngModel)]="data.description"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" value="Save" class="btn btn-success col-lg-4 form-control">
+        </div>
+    </form>
+</div>

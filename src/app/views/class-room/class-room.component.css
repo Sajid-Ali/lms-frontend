@@ -1,0 +1,34 @@
+.wrapper{
+    margin-top:3.4rem;
+}
+.row{
+    margin:0;
+}
+.videoCard:hover{
+    background-color:black;
+    opacity:0.9;
+    color:white;
+    cursor: pointer;
+}
+.active{
+    background-color:black;
+    opacity:0.9;
+    color:white;
+}
+
+.mouseEnter{
+    color:green;
+    cursor: pointer;
+}
+
+.thumb{
+    color:lightgrey;
+}
+
+.hover{
+    color:green;
+    cursor: pointer;
+}
+.liked {
+    color:green;
+}

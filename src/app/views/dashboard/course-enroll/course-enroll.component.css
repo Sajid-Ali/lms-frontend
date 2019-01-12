@@ -1,0 +1,7 @@
+.wrapper{
+    margin-left: 18rem;
+}
+.courseCard:hover{
+    padding:0.1rem;
+    cursor: pointer;
+}

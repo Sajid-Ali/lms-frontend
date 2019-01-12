@@ -1,0 +1,27 @@
+<div>
+  <!-- <div class="card-body">
+      <div class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#exampleModalCenter"> Create Course</div>
+  </div> -->
+
+  <div class="container">
+    <div *ngIf="isEnrolled">
+    <div class="row">
+        <div  class="card courseCard" style="width: 14rem;margin-right: 2rem; margin-top:3rem;" *ngFor="let enrolled of enrolledCourses" (click)="goToClass(enrolled.id)">
+          <img class="card-img-top" src="{{enrolled.image_cdnUrl}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{enrolled.course_name}}</h5>
+          </div>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="!isEnrolled">
+      <div class="container mt-5">
+        <h1 class="text-dark mx-auto text-center">
+          looks like you are not enrolled in any course yet
+        </h1>
+        <p>Enrolled in your favourite couse</p>
+        <a routerLink="/">Take Me To Courses</a>
+      </div>
+    </div>
+  </div>
+</div>

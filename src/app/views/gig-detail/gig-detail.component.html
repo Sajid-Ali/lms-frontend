@@ -1,0 +1,105 @@
+<div class="container contentWrapper">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4>{{gig.title}}</h4>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="card-body">
+                    <img src="{{gig.image}}" class="card-img-top img-fluid">
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header">
+                    <h5>About Gig</h5>
+                </div>
+                <div class="card-body">
+                    {{gig.description}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <span>${{gig.price}}</span> Order Details
+                </div>
+                <div class="card-body">
+                    <h5>
+                        <span>{{gig.duration}}</span> Day Order Delivery Time
+                    </h5>
+                    <button class="btn btn-success btn-block" *ngIf="isUsersGig(gig.user_id) === false" (click)="orderNow()">Order Now</button>
+                    <button class="btn btn-success btn-block" *ngIf="isUsersGig(gig.user_id)" (click)="showUpdatedModal()" data-target="#updateModal" data-toggle="modal">Edit Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Create Your Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #modalCloseBtn>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #CreateCourseForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <ngx-uploadcare-widget images-only="true" public-key="c45db5202bb0e3a638d0"
+                                               (on-upload-complete)="onUploadComplete($event)">
+                        </ngx-uploadcare-widget>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputCourseName" class="bmd-label-floating">GIG Title</label>
+                        <input type="text" name="title" class="form-control" id="InputCourseName"
+                               [(ngModel)]="data.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputCourseDisc" class="bmd-label-floating">Gig Description</label>
+                        <textarea type="text" name="description" class="form-control" id="InputCourseDisc"
+                                  [(ngModel)]="data.description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="InputCoursePrice" class="bmd-label-floating">Price</label>
+                        <input type="text" name="price" class="form-control" id="InputCoursePrice"
+                               [(ngModel)]="data.price">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputCategory" class="bmd-label-floating">Select Category</label>
+                        <select name="category_id" id="InputCategory" class="form-control"
+                                [(ngModel)]="data.category_id">
+                            <option value="1">Development</option>
+                            <option value="2">Engineering</option>
+                            <option value="3">Mathematics</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="days" class="bmd-label-floating">Select Category</label>
+                        <select name="days" id="days" class="form-control" [(ngModel)]="data.duration">
+                            <option value="1">1 Day</option>
+                            <option value="2">2 Day</option>
+                            <option value="3">3 Day</option>
+                            <option value="4">4 Day</option>
+                            <option value="5">5 Day</option>
+                            <option value="6">6 Day</option>
+                            <option value="7">7 Day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg float-right">Update</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div>
+    </div>
+</div>

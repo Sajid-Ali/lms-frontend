@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="text-center">User Profile</h5>
+  </div>
+  <div class="card-body">
+    <form action="" #userProfileForm=ngForm (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" value="{{user.firstName}}" [(ngModel)]="user.firstName" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" value="{{user.lastName}}" [(ngModel)]="user.lastName" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{user.email}}" [(ngModel)]="user.email" required>
+      </div>
+      <div class="form-group">
+        <textarea name="biograpy" id="biography" cols="30" rows="10" class="form-control" placeholder="Enter your biography" [(ngModel)]="user.biography" required></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="form-control btn btn-success" [disabled]="!userProfileForm.valid" value="Save">
+      </div>
+    </form>
+  </div>
+</div>

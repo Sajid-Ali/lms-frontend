@@ -1,0 +1,24 @@
+<div class="dashboard">
+    <div class="card bg-dark dashboard-header">
+        <div class="card-body mt-5">
+            <div class="container">
+                <h1 class="text-white">Dashboard</h1>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="container">
+                <div class="row">
+                    <a routerLink="mycourse" class="nav-link" [class.active]="isMyCourseSelect">My Courses</a>
+                    <a routerLink="enroll" class="nav-link" [class.active]="isEnrolledSelect">Enrolled Courses</a>
+                    <a routerLink="gigs" class="nav-link" [ngClass]="{'active':sec === 'gigs'}">Gigs</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>

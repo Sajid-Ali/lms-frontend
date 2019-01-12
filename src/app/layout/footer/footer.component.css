@@ -1,0 +1,15 @@
+footer{
+    background-color:#212529;
+    height:15rem;
+    color:white;
+    clear:both;
+}
+.copyright{
+    color:white;
+}
+.footer-strong{
+    margin-top:3rem;
+}
+.footer-bottom-text{
+    margin-top:7rem;
+}

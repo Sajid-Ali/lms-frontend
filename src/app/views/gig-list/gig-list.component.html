@@ -1,0 +1,26 @@
+<div class="gig-wrapper py-3 px-1">
+    <div class="container">
+        <div class="col-lg-12 bg-dark nav-link my-3">
+            <h5 class="text-white">Gig Section</h5>
+        </div>
+
+        <div class="row">
+            <div class="card  m-3 mt-3" style="width: 13rem;" *ngFor="let gig of gigs"
+                 (click)="navigateToGigDetails(gig.id)">
+                <img class="card-img-top" src="{{gig.image}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-text">{{gig.title}}</h5>
+                </div>
+                <div class="card-footer">
+                    <h5 class="float-right">${{gig.price}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div *ngIf="isLoading">
+    <div class="container text-center">
+        <img src="../../../assets/loader.gif" class="col-lg-1 img-fluid" alt="Loading ...."/>
+    </div>
+</div>

@@ -1,0 +1,179 @@
+<div class="card bg-dark mt-4 card-header">
+    <div class="container mt-4">
+        <div class="card-body col-lg-12">
+            <div class="row">
+                <div class="img-thumb">
+                    <img src="{{course.image_cdnUrl}}" alt="CourseImage">
+                </div>
+                <div class="col-lg-8 mt-1">
+                    <h1 class="course-title text-white">
+                        {{course.course_name}}
+                    </h1>
+                    <p class="text-white">
+                        {{course.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="container">
+            <div class="row">
+                <a [routerLink]="['videos',courseId]" [ngClass]="{'active':uriSegment === 'videos'}" class="nav-link">Course Videos</a>
+                <a [routerLink]="['info',courseId]" [ngClass]="{'active':uriSegment === 'info'}" class="nav-link">Course Info</a>
+                <!--<a routerLink="gigs" class="nav-link">Gigs</a>-->
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<!--<div class="card-body">-->
+    <!--<input type="button" class="btn btn-success float-right" value="Upload Videos" data-toggle="modal"-->
+           <!--data-target="#videoUploadModal">-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal for video uploading &ndash;&gt;-->
+<!--<div class="modal fade" id="videoUploadModal" tabindex="-1" role="dialog" aria-labelledby="videoUploadModalLabel"-->
+     <!--aria-hidden="true">-->
+    <!--<div class="modal-dialog" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h5 class="modal-title" id="videoUploadModalLabel">Course Video Upload</h5>-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" #modalCloseBtn>-->
+                    <!--<span aria-hidden="true">&times;</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<span class="meter"><span></span></span>-->
+                <!--<div class="form-group">-->
+                    <!--&lt;!&ndash;<ngx-uploadcare-widget public-key="c45db5202bb0e3a638d0"&ndash;&gt;-->
+                    <!--&lt;!&ndash;(on-upload-complete)="onUploadComplete($event)">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ngx-uploadcare-widget>&ndash;&gt;-->
+                    <!--<input type="hidden" name="file-uploader" id="file-uploader" role="uploadcare-uploader"-->
+                           <!--data-clearable="true" data-public-key="c45db5202bb0e3a638d0">-->
+
+                <!--</div>-->
+                <!--<form #videoUploadForm=ngForm (ngSubmit)="onSubmit(videoUploadForm)">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="title" class="bmd-label-floating">Title</label>-->
+                        <!--<input type="text" name="title" id="title" class="form-control" [(ngModel)]="videoData.title">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="description" class="bmd-label-floating">Description</label>-->
+                        <!--<input type="text" name="description" id="description" class="form-control"-->
+                               <!--[(ngModel)]="videoData.description">-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="oldModule">Select from existing Module</label>-->
+                        <!--<select class="form-control" id="oldModule" name="oldModule" [(ngModel)]="videoData.module"-->
+                                <!--[disabled]="videoData.checked">-->
+                            <!--<option *ngFor="let module of modules" [value]="module.id">{{module.module_name}}</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-check">-->
+                        <!--<input type="checkbox" class="form-check-input" id="checkBox" name="checked"-->
+                               <!--[(ngModel)]="videoData.checked"/>-->
+                        <!--<label for="checkBox" class="form-check-label">or create new module</label>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" [hidden]="!videoData.checked">-->
+                        <!--<input type="text" class="form-control" name="newModule" placeholder="New Module Name"-->
+                               <!--id="newModule" [(ngModel)]="videoData.module"/>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<input type="submit" class="form-control btn btn-raised btn-info" value="upload" *ngIf="isDurationFetched()" [disabled]="isLoading()">-->
+                        <!--<input type="button" class="form-control btn btn-raised btn-info" value="Fetching Video Source.." disabled *ngIf="!isDurationFetched()">-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; <div class="card-header">-->
+    <!--<video class="col-lg-10 col-lg-offset-1" [src]="source" controls>-->
+        <!--Your browser does not support the video tag.-->
+      <!--</video>-->
+<!--</div> &ndash;&gt;-->
+<!--<div class="card-body">-->
+    <!--&lt;!&ndash; <table class="table table-stripe table-dark">-->
+          <!--<tbody>-->
+            <!--<tr *ngFor="let courseVideo of courseVideos">-->
+              <!--<td><a href="#" (click)="setSource($event,courseVideo.cdnUrl)">{{courseVideo.title}}</a> </td>-->
+              <!--<td>{{courseVideo.description}}</td>-->
+            <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table> &ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="card col-lg-2 m-3 mt-4 videoCard" style="padding:0;" *ngFor="let courseVideo of courseVideos"&ndash;&gt;-->
+    <!--&lt;!&ndash;(click)="setSource(courseVideo.cdnUrl)" data-target="#videoModal" data-toggle="modal">&ndash;&gt;-->
+    <!--&lt;!&ndash;<img class="card-img-top img-fluid" src="../../../assets/images/course.jpg" alt="Card image cap">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="card-body">&ndash;&gt;-->
+    <!--&lt;!&ndash;<h5 class="card-title">&ndash;&gt;-->
+    <!--&lt;!&ndash;{{courseVideo.title}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</h5>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="card-text">&ndash;&gt;-->
+    <!--&lt;!&ndash;{{courseVideo.description}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--<div class="row">-->
+        <!--<div class="container">-->
+            <!--<div class="card mb-3" style="width:60rem;" *ngFor="let module of modules">-->
+                <!--<div class="card-header" (click)="toggleCourse($event,module.id)">-->
+                    <!--<strong><span style="margin-right: 0.5rem;" id = "span_{{module.id}}">+</span>{{module.module_name}}</strong>-->
+                <!--</div>-->
+                <!--<div class="card-body p-0 course-content-body cardContentBody">-->
+                    <!--&lt;!&ndash;<table class="table hidden">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<tbody *ngFor="let courseVideo of courseVideos">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<tr style="margin-left: 4rem !important;" *ngIf="courseVideo.course_module_id === module.id">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>{{courseVideo.title}}</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td></td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>{{courseVideo.duration}}</td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                    <!--<ul class="list-group list-group-flush">-->
+                        <!--<div *ngFor="let video of courseVideos">-->
+                            <!--<li class="list-group-item" *ngIf="video.course_module_id === module.id" data-target="#videoModal" data-toggle="modal" (click)="setSource($event,video.cdnUrl)">-->
+                                    <!--{{video.title}}<span class="float-right">{{getFormattedDuration(video.duration)}}</span>-->
+                            <!--</li>-->
+                        <!--</div>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"-->
+     <!--aria-hidden="true">-->
+    <!--<div class="modal-dialog modal-lg">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h5 class="modal-title" id="exampleModalLabel">{{courseDetails.name}}</h5>-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">-->
+                    <!--<span aria-hidden="true">&times;</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<video class="img-fluid" [src]="courseDetails.source" controls>-->
+                    <!--Your browser does not support the video tag.-->
+                <!--</video>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div hidden>-->
+    <!--<video class="img-fluid" src="#" id="videoPlayer" controls>-->
+        <!--Your browser does not support the video tag.-->
+    <!--</video>-->
+<!--</div>-->
+
+
+
