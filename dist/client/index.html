@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Client</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://static.opentok.com/v2/js/opentok.js"></script>
+  <script type="text/javascript">
+       stripe = Stripe('pk_test_r00PfYPrxh5FWGVpXk4ilpoH'); // test publishable key
+       elements = stripe.elements();
+  </script>
+
+  <script>
+    UPLOADCARE_PUBLIC_KEY = "c45db5202bb0e3a638d0";
+
+    UPLOADCARE_LOCALE_TRANSLATIONS = {
+    buttons: {
+        choose: {
+            files: {
+                one: 'Upload Videos',
+                other: 'Upload Videos'
+            },
+            images:{
+                one: 'Upload Image',
+                other: 'Upload Videos'
+            }
+        }
+    }
+    }
+  </script>
+<link rel="stylesheet" href="styles.30f6e16d4129d3684b39.css"></head>
+
+<body>
+  <app-root></app-root>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.27a6edf1f23301377c1a.js"></script><script type="text/javascript" src="scripts.bf7dc47ab7b004ef1d45.js"></script><script type="text/javascript" src="main.9e38483fb16607e27aa5.js"></script></body>
+
+</html>
