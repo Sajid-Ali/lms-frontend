@@ -19,6 +19,7 @@ export class ObserverService {
     balanceStatus = this.balance.asObservable();
 
     constructor(private tokenService: TokenService, private requestHandler: RequestHandlerService) {
+
     }
 
     changeBalance(balance) {

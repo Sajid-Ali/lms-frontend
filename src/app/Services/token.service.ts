@@ -6,9 +6,13 @@ import {Injectable} from '@angular/core';
 })
 export class TokenService {
 
+    // private iss = {
+    //     login: 'http://elearn-fyp2.herokuapp.com/api/login'
+    //     // signup: 'https://elearn-fyp2.herokuapp.com/api/signup'
+    // };
+
     private iss = {
-        login: 'http://elearn-fyp2.herokuapp.com/api/login'
-        // signup: 'https://elearn-fyp2.herokuapp.com/api/signup'
+        login: 'http://localhost:8000/api/login'
     };
 
 
@@ -48,11 +52,9 @@ export class TokenService {
 
     isValid() {
         const token = this.get('token');
-        console.log('Getting token******', token);
         if (token) {
             const payload = this.payload(token);
             if (payload) {
-                console.log('index of payload.iss', Object.values(this.iss).indexOf(payload.iss));
                 return (Object.values(this.iss).indexOf(payload.iss) > -1);
             }
         }
@@ -63,12 +65,10 @@ export class TokenService {
 
     payload(token) {
         const payload = token.split('.')[1];
-        console.log('payload:', payload);
         return this.decode(payload);
     }
 
     decode(payload) {
-        console.log('after decode:', JSON.parse(atob(payload)));
         return JSON.parse(atob(payload));
     }
 

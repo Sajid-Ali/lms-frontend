@@ -13,8 +13,41 @@ export class RequestHandlerService {
     constructor(private http: HttpClient, private tokenService: TokenService) {
     }
 
-    // private baseUrl = 'http://localhost:8000/api';
-    private baseUrl = 'https://elearn-fyp2.herokuapp.com/api';
+    private baseUrl = 'http://localhost:8000/api';
+    // private baseUrl = 'https://elearn-fyp2.herokuapp.com/api';
+
+    /*
+
+    Admin Panel Routes
+     */
+    getAllUsers() {
+        return this.http.get(`${this.baseUrl}/admin/getAllUsers`);
+    }
+
+    getAllCourses() {
+        return this.http.get(`${this.baseUrl}/admin/getAllCourses`);
+    }
+
+    getAllCategories() {
+        return this.http.get(`${this.baseUrl}/admin/getAllCategories`);
+    }
+
+    createCategory(category) {
+        return this.http.post(`${this.baseUrl}/admin/createCategory`, category);
+    }
+
+    deleteCategory(id) {
+        return this.http.get(`${this.baseUrl}/admin/deleteCategory/${id}`);
+    }
+
+    editCategory(category) {
+        return this.http.post(`${this.baseUrl}/admin/editCategory`, category);
+    }
+
+
+    /*
+    User Routes
+     */
 
     searchByTerm(term) {
         return this.http.get(`${this.baseUrl}/search/${term}`);
@@ -96,9 +129,9 @@ export class RequestHandlerService {
         return this.http.get(`${this.baseUrl}/course/courseInfo/${courseId}`);
     }
 
-    getAllCourses() {
-        return this.http.get(`${this.baseUrl}/course/all`);
-    }
+    // getAllCourses() {
+    //     return this.http.get(`${this.baseUrl}/course/all`);
+    // }
 
     getEnrolledCourses(userId) {
         return this.http.get(`${this.baseUrl}/course/enroll/${userId}`);

@@ -24,7 +24,10 @@ export class LiveCourseComponent implements OnInit, OnDestroy {
     connected: Boolean;
     courseId;
 
-    constructor(private requestHandler: RequestHandlerService, private tokenHandler: TokenService, private activatedRouter: ActivatedRoute) {
+    constructor(
+        private requestHandler: RequestHandlerService,
+        private tokenHandler: TokenService,
+        private activatedRouter: ActivatedRoute) {
 
         this.constraints = {
             video: true

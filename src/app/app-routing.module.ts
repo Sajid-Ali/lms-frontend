@@ -26,6 +26,12 @@ import {UserprofileComponent} from './views/user-profile/userprofile/userprofile
 import {ProfilepictureComponent} from './views/user-profile/profilepicture/profilepicture.component';
 import {ProfileComponent} from './views/user-profile/profile/profile.component';
 import {LiveEnrollCourseComponent} from './views/live-enroll-course/live-enroll-course.component';
+import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
+import {AdminRegisteredUsersComponent} from './admin/admin-registered-users/admin-registered-users.component';
+import {AdminCoursesComponent} from './admin/admin-courses/admin-courses.component';
+import {AdminCategoriesComponent} from './admin/admin-categories/admin-categories.component';
+import {IsAdminService} from './Services/is-admin.service';
+import {IsUserService} from './Services/is-user.service';
 
 const routes: Routes = [
 
@@ -41,6 +47,29 @@ const routes: Routes = [
             {
                 path: 'reset-password',
                 redirectTo: '/login/password/reset-password'
+            }
+        ]
+    },
+    {
+        path: 'admin',
+        component: AdminPanelComponent,
+        canActivate: [AfterLoginService, IsAdminService],
+        children: [
+            {
+                path: '',
+                component: AdminRegisteredUsersComponent
+            },
+            {
+                path: 'registered-users',
+                component: AdminRegisteredUsersComponent
+            },
+            {
+                path: 'courses',
+                component: AdminCoursesComponent
+            },
+            {
+                path: 'categories',
+                component: AdminCategoriesComponent
             }
         ]
     },
@@ -73,11 +102,13 @@ const routes: Routes = [
     },
     {
         path: 'user/settings',
-        component: SettingComponent
+        component: SettingComponent,
+        canActivate: [AfterLoginService]
     },
     {
         path: 'user/profile',
         component: UserprofileComponent,
+        canActivate: [AfterLoginService],
         children: [
             {
                 path: '',
@@ -96,6 +127,7 @@ const routes: Routes = [
     {
         path: 'user/orders',
         component: OrdersComponent,
+        canActivate: [AfterLoginService, IsUserService],
         children: [
             {
                 path: '',
@@ -114,7 +146,7 @@ const routes: Routes = [
     {
         path: 'user/dashboard',
         component: DashboardComponent,
-        canActivate: [AfterLoginService],
+        canActivate: [AfterLoginService, IsUserService],
         children: [
             {
                 path: '',
@@ -155,7 +187,7 @@ const routes: Routes = [
     {
         path: 'user/dashboard/course/details/:id',
         component: CourseDetailComponent,
-        canActivate: [AfterLoginService],
+        canActivate: [AfterLoginService, IsUserService],
         children: [
             {
                 path: '',
@@ -178,11 +210,12 @@ const routes: Routes = [
     {
         path: 'user/classroom/:id',
         component: ClassRoomComponent,
-        canActivate: [AfterLoginService]
+        canActivate: [AfterLoginService, IsUserService]
     },
     {
         path: 'user/classroom/live/:id',
-        component: LiveEnrollCourseComponent
+        component: LiveEnrollCourseComponent,
+        canActivate: [AfterLoginService, IsUserService]
     },
     {path: '**', component: ContentComponent}
 

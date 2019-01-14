@@ -18,6 +18,7 @@ export class MyCourseComponent implements OnInit {
     courseId;
     createdCourse;
     isUploadComplete;
+    categories;
     public data = {
         course_name: null,
         description: null,
@@ -61,12 +62,15 @@ export class MyCourseComponent implements OnInit {
             this.data.image_cdnUrl = info.cdnUrl;
         });
 
-
         this.isUploadComplete = false;
         this.requestHandler.getMyCourse(this.tokenHandler.getUserTokenHandler().id)
             .subscribe(
                 data => this.setCourse(data)
             );
+
+        this.requestHandler.getAllCategories().subscribe(
+            categories => this.categories = categories
+        );
     }
 
     setCourse(data) {

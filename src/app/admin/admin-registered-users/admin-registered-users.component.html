@@ -1,0 +1,21 @@
+<div class="card-body">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Profile</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td><img src="{{user.profile_pic}}" alt="profile image" class="img-fluid" style="width:3rem;height: 3rem"></td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

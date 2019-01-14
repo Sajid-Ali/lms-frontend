@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
+import {TokenService} from './token.service';
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {TokenService} from '../Services/token.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AfterLoginService implements CanActivate {
+export class IsUserService {
 
     constructor(private tokenService: TokenService, private router: Router) {
     }
@@ -14,11 +14,12 @@ export class AfterLoginService implements CanActivate {
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (this.tokenService.loggedIn()) {
+        if (this.tokenService.getUserTokenHandler().role === 'user') {
             return true;
         }
 
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/admin');
+        window.scrollTo(0, 0);
 
     }
 }

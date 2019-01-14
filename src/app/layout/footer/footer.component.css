@@ -2,7 +2,7 @@ footer{
     background-color:#212529;
     height:15rem;
     color:white;
-    clear:both;
+    clear:both !important;
 }
 .copyright{
     color:white;

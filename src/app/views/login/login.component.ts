@@ -44,7 +44,12 @@ export class LoginComponent implements OnInit {
         this.requestHandler.getUserAccount(this.tokenService.getUserTokenHandler().id).subscribe(
             data => this.observer.changeBalance(data)
         );
-        this.router.navigateByUrl('/');
+        if (this.tokenService.getUserTokenHandler().role === 'admin') {
+            this.router.navigateByUrl('/admin');
+        } else {
+            this.router.navigateByUrl('/');
+        }
+
     }
 
 

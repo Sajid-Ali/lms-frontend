@@ -44,9 +44,7 @@
             <div class="form-group">
               <label for="InputCategory" class="bmd-label-floating">Select Category</label>
               <select name="category_id" id="InputCategory" class="form-control" [(ngModel)]="data.category_id" required>
-                <option value="1">Development</option>
-                <option value="2">Engineering</option>
-                <option value="3">Mathematics</option>
+                <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
               </select>
             </div>
             <div class="form-group">

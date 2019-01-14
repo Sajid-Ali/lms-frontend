@@ -10,8 +10,10 @@ import {RequestHandlerService} from '../../../Services/request-handler.service';
 export class ProfilepictureComponent implements OnInit {
 
     user;
+    updated;
 
     constructor(private tokenHandler: TokenService, private requestHandler: RequestHandlerService) {
+        this.updated = false;
     }
 
     ngOnInit() {
@@ -20,8 +22,7 @@ export class ProfilepictureComponent implements OnInit {
 
     onUploadComplete(f) {
         this.user.profile_pic = f.cdnUrl;
-        console.log('f:', f.cdnUrl);
-        console.log('user:', this.user.profile_pic);
+        this.updated = false;
     }
 
     onSubmit() {
@@ -47,6 +48,11 @@ export class ProfilepictureComponent implements OnInit {
     handleToken(token) {
         this.tokenHandler.tokenHandler(token.access_token);
         this.tokenHandler.setUserTokenHandler(token.user);
+        this.updated = true;
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
     }
 
 }

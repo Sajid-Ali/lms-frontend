@@ -30,12 +30,12 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
     @ViewChild(UcWidgetComponent) UCWidget: UcWidgetComponent;
     @ViewChild(UcWidgetCustomComponent) Custom_UCWidget: UcWidgetCustomComponent;
 
-     courseDetails = {
+    courseDetails = {
         name: null,
         source: null
     };
     public course;
-     uploadedVideo;
+    uploadedVideo;
     videoData = {
         uuid: null,
         cdnUrl: null,
@@ -49,8 +49,8 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() public courseVideos;
     public courseId;
     public enrolledCourses;
-     widget;
-     videoPlayer;
+    widget;
+    videoPlayer;
     durationFetchingComplete = true;
     @Input() public modules;
     loading;
@@ -113,7 +113,6 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     ngAfterViewInit(): void {
-        console.log('******* widget ********', this.UCWidget);
         $('.cardContentBody').toggle();
     }
 
@@ -156,18 +155,16 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log('some changes here', changes);
+
     }
 
     setModules(data) {
-        console.log('Modules:', data);
         this.modules = data;
     }
 
     setSource(event, src) {
         $('.active').removeClass('active');
         const element = event.srcElement;
-        console.log($(element).addClass('active'));
         this.courseDetails.source = src;
     }
 
@@ -213,7 +210,6 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
         this.durationFetchingComplete = false;
 
         this.videoPlayer.onloadedmetadata = () => {
-            console.log('duration: ', this.videoPlayer.duration);
             this.videoData.duration = this.videoPlayer.duration;
             this.durationFetchingComplete = true;
         };
@@ -223,5 +219,6 @@ export class CoursevideosComponent implements OnInit, AfterViewInit, OnChanges {
 
     goLive() {
         this.navigator.navigateByUrl(`/user/dashboard/course/details/${this.courseId}/live/${this.courseId}`);
+        window.scrollTo(0, 0);
     }
 }

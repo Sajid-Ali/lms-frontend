@@ -177,7 +177,7 @@
         <!--&lt;!&ndash;<h5>You are Already enrolled</h5>&ndash;&gt;-->
         <!--</div>-->
         <div class="text-center mt-3 mb-3" *ngIf="isLoggedIn && isEnrolled">
-            <a class="btn btn-success btn-block text-white" (click)="course.course_type_id == 1 && goToClass() || goToLiveRoom()">
+            <a class="btn btn-success btn-block text-white" (click)="course.course_type_id == 1 ? goToClass() : goToLiveRoom()">
                 {{course.course_type_id == 1 && "Go To Class room" || "Go to Live Room"}}
             </a>
         </div>

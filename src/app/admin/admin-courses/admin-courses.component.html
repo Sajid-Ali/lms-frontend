@@ -1,0 +1,21 @@
+<div class="card-body">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Creator</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let course of courses">
+      <td><img src="{{course.image_cdnUrl}}" alt="profile image" class="img-fluid" style="width:3rem;height: 3rem"></td>
+      <td>{{course.course_name}}</td>
+      <td>{{course.category.name}}</td>
+      <td>{{course.user.firstName+' '+course.user.lastName}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

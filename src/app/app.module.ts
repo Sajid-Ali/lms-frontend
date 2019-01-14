@@ -44,6 +44,10 @@ import { LiveEnrollCourseComponent } from './views/live-enroll-course/live-enrol
 import { UserprofileComponent } from './views/user-profile/userprofile/userprofile.component';
 import { ProfileComponent } from './views/user-profile/profile/profile.component';
 import { ProfilepictureComponent } from './views/user-profile/profilepicture/profilepicture.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { AdminRegisteredUsersComponent } from './admin/admin-registered-users/admin-registered-users.component';
+import { AdminCoursesComponent } from './admin/admin-courses/admin-courses.component';
+import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 
 
 @NgModule({
@@ -84,7 +88,11 @@ import { ProfilepictureComponent } from './views/user-profile/profilepicture/pro
     LiveEnrollCourseComponent,
     UserprofileComponent,
     ProfileComponent,
-    ProfilepictureComponent
+    ProfilepictureComponent,
+    AdminPanelComponent,
+    AdminRegisteredUsersComponent,
+    AdminCoursesComponent,
+    AdminCategoriesComponent
   ],
   imports: [
     BrowserModule,

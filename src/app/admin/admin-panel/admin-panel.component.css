@@ -1,0 +1,15 @@
+.menu-items:hover{
+    background-color:green !important;
+    color:white !important;
+    margin-left:0.8rem;
+}
+
+.menu-items-selected {
+    background-color: green !important;
+    color:white !important;
+    margin-left: 0.8rem;
+}
+
+.menu-card {
+    background-color:#4d9c45;
+}

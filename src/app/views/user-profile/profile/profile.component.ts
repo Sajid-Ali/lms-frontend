@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {TokenService} from '../../../Services/token.service';
 import {RequestHandlerService} from '../../../Services/request-handler.service';
 
@@ -10,8 +10,11 @@ import {RequestHandlerService} from '../../../Services/request-handler.service';
 export class ProfileComponent implements OnInit {
 
     user;
+    updated;
+    @ViewChild('alertCloseBtn') alertCloseBtn: ElementRef;
 
     constructor(private tokenHandler: TokenService, private requestHandler: RequestHandlerService) {
+        this.updated = false;
     }
 
     ngOnInit() {
@@ -36,6 +39,11 @@ export class ProfileComponent implements OnInit {
                 console.log('successfully updated');
             }
         );
+        this.updated = true;
+        setTimeout(() => {
+            const btn = this.alertCloseBtn.nativeElement;
+            btn.click();
+        }, 1000);
     }
 
     handleToken(token) {
