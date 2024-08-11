@@ -40,7 +40,7 @@
     "stripe": "^6.20.0",
     "stripes": "0.0.82",
     "typescript": "~2.7.2",
-    "uploadcare-widget": "^3.6.2",
+    "uploadcare-widget": "^3.21.2",
     "webrtc-adapter": "^7.1.1",
     "zone.js": "~0.8.26"
   },
