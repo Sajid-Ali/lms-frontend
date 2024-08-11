@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^6.1.10",
     "@angular/platform-browser-dynamic": "^6.1.10",
     "@angular/router": "^6.1.10",
-    "@types/jquery": "^3.3.29",
+    "@types/jquery": "^3.5.30",
     "@types/stripe": "^6.19.1",
     "angular-agora-rtc": "^0.1.0",
     "bootstrap": "^4.2.1",
